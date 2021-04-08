@@ -11,7 +11,7 @@ repositories {
 }
 
 micronaut {
-    runtime("netty")
+    runtime("jetty")
     testRuntime("junit5")
     processing {
         incremental(true)
@@ -20,10 +20,12 @@ micronaut {
 }
 
 dependencies {
+    implementation("info.novatec:micronaut-camunda-bpm-feature:0.22.0")
     implementation("io.micronaut:micronaut-http-client")
     implementation("io.micronaut:micronaut-runtime")
     implementation("io.micronaut:micronaut-validation")
     runtimeOnly("ch.qos.logback:logback-classic")
+    runtimeOnly("com.h2database:h2")
 }
 
 

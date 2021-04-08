@@ -1,3 +1,9 @@
 micronaut:
   application:
     name: server
+camunda:
+  admin-user:
+    id: admin
+    password: admin
+  rest:
+    enabled: true
