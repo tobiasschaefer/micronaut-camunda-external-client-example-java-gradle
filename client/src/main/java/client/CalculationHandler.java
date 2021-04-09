@@ -13,30 +13,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package client;
 
 import info.novatec.micronaut.camunda.external.client.feature.ExternalTaskSubscription;
 import org.camunda.bpm.client.task.ExternalTask;
 import org.camunda.bpm.client.task.ExternalTaskHandler;
 import org.camunda.bpm.client.task.ExternalTaskService;
+import org.camunda.bpm.engine.variable.VariableMap;
+import org.camunda.bpm.engine.variable.Variables;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Singleton;
 
 /**
+ * This handler retrieves the "length" and "height" of a rectangle, solves the calculation,
+ * and returns the result as the process variable "size".
+ *
  * @author Tobias Schäfer
  */
 @Singleton
-@ExternalTaskSubscription(topicName = "test-topic")
-public class SimpleHandler implements ExternalTaskHandler {
+@ExternalTaskSubscription(topicName = "calculation")
+public class CalculationHandler implements ExternalTaskHandler {
 
-    private static final Logger log = LoggerFactory.getLogger(SimpleHandler.class);
+    private static final Logger log = LoggerFactory.getLogger(CalculationHandler.class);
 
     @Override
     public void execute(ExternalTask externalTask, ExternalTaskService externalTaskService) {
 
-        externalTaskService.complete(externalTask);
-        log.info("Completed external task");
+        int length = externalTask.getVariable("length");
+        int height = externalTask.getVariable("height");
+
+        int size = length * height;
+
+        log.info("External client calculated {}*{}={}", length, height, size);
+
+        externalTaskService.complete(externalTask, Variables.putValue("size", size));
     }
 }
