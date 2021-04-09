@@ -1,0 +1,3 @@
+rootProject.name="micronaut-camunda-external-client"
+include "client"
+include "server"
