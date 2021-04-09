@@ -25,7 +25,7 @@ dependencies {
 
 
 application {
-    mainClass.set("server.Application")
+    mainClass.set("server.ServerApplication")
 }
 java {
     sourceCompatibility = JavaVersion.toVersion("1.8")
