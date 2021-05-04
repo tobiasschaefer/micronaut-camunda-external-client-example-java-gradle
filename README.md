@@ -5,7 +5,9 @@ This example shows how to apply the external task pattern: the server with a BPM
 The server is implemented with the [Micronaut Camunda Integration](https://github.com/NovatecConsulting/micronaut-camunda-bpm).
 The external client is implemented with the [Micronaut Camunda External Client](https://github.com/NovatecConsulting/micronaut-camunda-external-client).
 
-Start Server:
+## Server
+
+To start the server:
 
 `./gradlew run -p server`
 
@@ -19,7 +21,9 @@ Created calculation: 62*35=?
 Created calculation: 89*53=?
 ```
 
-Start Client:
+## Client
+
+To start the client:
 
 `./gradlew run -p client`
 
@@ -31,4 +35,19 @@ External client calculated 18*90=1620
 External client calculated 37*23=851
 External client calculated 62*35=2170
 External client calculated 89*53=4717
+```
+
+## Client (GraalVM)
+
+The client can also by compiled for GraalVM which will minimize start up times.
+
+The following steps are based on instructions from https://github.com/NovatecConsulting/micronaut-camunda-external-client#graalvm
+
+```
+cd client
+../gradlew build
+mkdir -p src/main/resources/META-INF/native-image/client
+java -agentlib:native-image-agent=config-output-dir=src/main/resources/META-INF/native-image/client -jar build/libs/client-0.0.1-SNAPSHOT-all.jar
+../gradlew clean nativeImage
+build/native-image/application
 ```
