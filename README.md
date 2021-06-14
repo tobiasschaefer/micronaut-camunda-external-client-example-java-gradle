@@ -44,6 +44,9 @@ The client can also by compiled for GraalVM which will minimize start up times.
 The following steps are based on instructions from https://github.com/NovatecConsulting/micronaut-camunda-external-client#graalvm
 
 ```
+sdk use java 21.0.0.2.r11-grl
+export PATH=/Library/Java/JavaVirtualMachines/graalvm-ce-java11-21.0.0.2/Contents/Home/bin:$PATH
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/graalvm-ce-java11-21.0.0.2/Contents/Home
 cd client
 ../gradlew build
 mkdir -p src/main/resources/META-INF/native-image/client
