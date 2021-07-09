@@ -2,8 +2,8 @@
 
 This example shows how to apply the external task pattern: the server with a BPMN process will create calculations which will be solved by an external task client.
 
-The server is implemented with the [Micronaut Camunda Integration](https://github.com/NovatecConsulting/micronaut-camunda-bpm).
-The external client is implemented with the [Micronaut Camunda External Client](https://github.com/NovatecConsulting/micronaut-camunda-external-client).
+The server is implemented with the [Micronaut Camunda Integration](https://github.com/camunda-community-hub/micronaut-camunda-bpm).
+The external client is implemented with the [Micronaut Camunda External Client](https://github.com/camunda-community-hub/micronaut-camunda-external-client).
 
 ## Server
 
@@ -41,7 +41,7 @@ External client calculated 89*53=4717
 
 The client can also by compiled for GraalVM which will minimize start up times.
 
-The following steps are based on instructions from https://github.com/NovatecConsulting/micronaut-camunda-external-client#graalvm
+The following steps are based on instructions from https://github.com/camunda-community-hub/micronaut-camunda-external-client#graalvm
 
 ```
 sdk use java 21.0.0.2.r11-grl
