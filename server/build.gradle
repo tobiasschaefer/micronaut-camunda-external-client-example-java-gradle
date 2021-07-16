@@ -23,10 +23,10 @@ dependencies {
     runtimeOnly("com.h2database:h2")
 }
 
-
 application {
     mainClass.set("server.ServerApplication")
 }
+
 java {
     sourceCompatibility = JavaVersion.toVersion("1.8")
     targetCompatibility = JavaVersion.toVersion("1.8")
